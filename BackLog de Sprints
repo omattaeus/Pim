@@ -1,0 +1,25 @@
+Primeira Sprint: Descrever os requisitos dos usuários e os requisitos do sistema. Classificar cada requisito (tanto os de usuários quanto os de sistema) como requisito funcional ou não funcional. Especificar o tipo de cada requisito não funcional levantado (usabilidade, desempenho, capacidade etc.);
+
+‌
+
+Segunda Sprint: Elaborar os diagramas de classes de análise (Boundary, Control, Entity). Demonstrar o comportamento dos casos de uso por meio do diagrama de sequência. Elaborar o diagrama de implantação (definir quantos servidores, banco de dados, estrutura utilizada para o sistema e como instalar o sistema);
+
+‌
+
+Terceira Sprint: Criar um cenário bem detalhado, com: regras do negócio, glossário do sistema, pesquisa de mercado, livros sobre o tema.
+
+Quarta Sprint: Elaborar os modelos de casos de uso para cada cenário e um geral resumido. Cada caso de uso deve ter uma descrição suscinta do seu comportamento, dos fluxos principais, alternativos e de exceção e pré e pós-condições. Identificar relacionamentos de include, extend e generalização;
+
+Quinta Sprint: Definir e justificar o ciclo de vida de desenvolvimento de software
+
+Sexta Sprint: Elaborar o Diagrama ER do banco de dados e o dicionário de dados.
+
+Sétima Sprint: Gerar o script de criação do banco (use uma ferramenta) e scripts de dados iniciais de testes (roteiros de teste) e homologação do sistema (testes de unidade, integração, performance, usabilidade etc);
+
+Oitava Sprint: Criar planilhas de testes para homologação do sistema identificando como produzir as evidências do teste e as querys no banco, para certificar que os dados estão corretos (um mínimo de testes que assegurem a funcionalidade básica do sistema);
+
+Nona sprint: Elaborar protótipos de telas para aprovação dos gestores do sistema;
+
+Décima Sprint: Elaborar o manual de uso do sistema para treinamento (eletrônico).
+
+Décima Primeira Sprint: Definir relatórios de gestão para análise de evolução dos negócios, análise de mercado, desempenho dos funcionários (RH) etc;
