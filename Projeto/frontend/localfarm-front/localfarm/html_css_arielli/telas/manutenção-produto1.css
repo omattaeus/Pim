@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #FFEBCA;
+    
+}
+nav {
+    background:#405743;
+    height: 135px;
+}
+body nav ul li a {
+    color:white;
+    text-decoration: none;
+    font-family: Poppins;
+    padding: 150px;
+
+    
+    
+}
+nav {
+    display: flex;
+    align-items:center;
+    
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 250px;
+    list-style: none;
+    flex-direction: column;
+}
+
+
+h1 {
+    margin: 40px;
+    width: 370;
+    height: 20;
+    padding: 15px;
+}
+
+table {
+    margin: 40px;
+    width: 75%;
+    height: 300px;
+    margin-top: -10px;
+}
+table thead tr{
+    text-align:left;
+   
+}
+table{
+    border-collapse: collapse;
+    background-color: #FCFEFF;
+    
+    
+}
+th {
+    background-color: #405743;
+    color: #FCFEFF;
+ 
+   
+}
+td {
+    border: none;
+   
+}
+img {
+    width: 150px;
+    height: 110px;
+    margin: 20px;
+       
+}
+.btn1 {
+    margin: 40px;
+    background-color: #405743;
+    color: white;
+    width: 100px; 
+    height: 47.64px; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 15px; 
+    margin-top: -10px;
+
+   
+}
+.btn2 {
+    margin: 30px;
+    background-color: #405743;
+    color:white;
+    width: 100px; 
+    height: 47.64px; 
+    font-size: 16px;
+    border: none; 
+    border-radius: 15px; 
+    margin-top: -10px;
+
+}
+.btn3{
+    margin: 30px;
+    background-color: #405743;
+    color:white;
+    width: 100px; 
+    height: 47.64px; 
+    font-size: 16px;
+    border: none; 
+    border-radius: 15px;
+    margin-top: -10px;
+}
+
+.btn4{
+    margin: 30px;
+    background-color: #405743;
+    color:white;
+    width: 80px; 
+    height: 39.64px; 
+    font-size: 16px;
+    border: none; 
+    border-radius: 15px;
+    margin-top: -10px;
+
+}
+.btn5{
+    margin: 15px;
+    background-color: #405743;
+    color:white;
+    width: 80px; 
+    height: 39.64px; 
+    font-size: 16px;
+    border: none; 
+    border-radius: 15px;
+    margin-top: -10px;
+    margin-left: 5px;
+
+}
+

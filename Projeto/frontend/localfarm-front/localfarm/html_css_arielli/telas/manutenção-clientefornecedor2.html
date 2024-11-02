@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção Cliente e Fornecedor</title>
+    <link rel="stylesheet" href="manutenção-clientefornecedor2.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="img">
+                    <ul>
+                        <img src="LOCAL FARM.png" alt="Logo-LOCAL-FARM">
+                    </ul>
+                </div>
+                <div class="header">
+                    <ul>
+                        <li><a href="#">Olá, Fulana</a></li>
+                        <li><a href="#">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <h1>Manutenção Cliente / Fornecedor</h1>
+        <form id="register-form">
+            <div class="half-box spacing">
+                <label for="cod">Código</label>
+                <input type="cod" name="cod" id="cod" placeholder="Digite seu código" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="cpfcnpj">CPF / CNPJ</label>
+                <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite seu CPF ou CPNJ aqui" required>
+            </div>
+            <div class="half-box">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="estado" required>
+                    <option value="#">Selecione</option>
+                    <option value="cpf">CPF</option>
+                    <option value="RJ">CNPJ</option>
+                </select>
+            </div>
+            <div class="full-box spacing">
+                <label for="endereco">Endereço</label>
+                <input type="text" name="endereco" id="endereco" placeholder="Digite seu endereço aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="num">Número</label>
+                <input type="text" name="num" id="num" placeholder="Digite o número aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="complemento">Complemento</label>
+                <input type="text" name="complemento" id="complemento" placeholder="Digite seu complemento">
+            </div>
+            <div class="half-box spacing">
+                <label for="bairro">Bairro</label>
+                <input type="text" name="complemento" id="complemento" placeholder="Digite seu bairro aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="cidade">Cidade</label>
+                <input type="text" name="cidade" id="cidade" placeholder="Digite sua cidade aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="estado">Estado</label>
+                <input type="text" name="estado" id="estado" placeholder="Digite seu Estado aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="pais">País</label>
+                <input type="text" name="pais" id="pais" placeholder="Digite seu país aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" id="cep" placeholder="Digite seu CEP aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="pais">País</label>
+                <input type="text" name="pais" id="pais" placeholder="Digite seu país aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="tel">Telefone</label>
+                <input type="tel" name="pais" id="pais" placeholder="Digite seu país aqui" required>
+            </div>
+            <div class="full-box spacing">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu endereço email aqui" required>
+            </div>
+        </form>
+    </div>
+    <button class="btn4" type="button">Salvar</button>
+    <button class="btn5" type="button">Cancelar</button>
+</body>
+
+</html>

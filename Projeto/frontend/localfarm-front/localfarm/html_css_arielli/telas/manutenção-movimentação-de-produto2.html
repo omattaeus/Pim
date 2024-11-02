@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manutenção Cliente e Fornecedor</title>
+    <link rel="stylesheet" href="manutenção-movimentação-de-produto2.css">
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="img">
+                    <ul>
+                        <img src="LOCAL FARM.png" alt="Logo-LOCAL-FARM">
+                    </ul>
+                </div>
+                <div class="header">
+                    <ul>
+                        <li><a href="#">Olá, Fulana</a></li>
+                        <li><a href="#">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <h1>Manutenção Movimentação/Produção de Produtos</h1>
+        <form id="register-form">
+            <div class="half-box spacing">
+                <label for="cod">Código</label>
+                <input type="text" name="cod" id="cod" placeholder="Digite seu código" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="datamov">Data do Movimento</label>
+                <input type="date" name="datamov" id="datamov" placeholder="Digite seu nome" required>
+            </div>
+            <div class="half-box">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="estado" required>
+                    <option value="#">Selecione</option>
+                    <option value="#">#</option>
+                    <option value="#">*</option>
+                </select>
+            </div>
+            <div class="half-box spacing">
+                <label for="prod">Produto</label>
+                <input type="text" name="prod" id="prod" placeholder="Pesquise seu Produto aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="uniMed">Endereço</label>
+                <input type="text" name="uniMed" id="uniMed" placeholder="Pesquise a unidade de medida aqui" required>
+            </div>
+            <div class="full-box spacing">
+                <label for="cliForn">Cliente / Fornecedor</label>
+                <input type="text" name="cliForn" id="cliFor" placeholder="Digite ... aqui" required>
+            </div>
+            <div class="half-box spacing">
+                <label for="quant">Quantidade</label>
+                <input type="text" name="quant" id="quant" placeholder="Digite a quantidade aqui" required>
+            </div>
+            <div class="half-box">
+                <label for="final">Finalidade</label>
+                <select id="final" name="final" required>
+                    <option value="#">Selecione</option>
+                    <option value="#">#</option>
+                    <option value="#">*</option>
+                </select>
+            </div>
+            <div class="half-box spacing">
+                <label for="dataContr">Bairro</label>
+                <input type="text" name="dataContr" id="dataContr" placeholder="Digite a data controle aqui" required>
+            </div>
+            <div class="half-box">
+                <label for="tipoContr">Finalidade</label>
+                <select id="tipoContr" name="tipoContr" required>
+                    <option value="#">Selecione</option>
+                    <option value="#">#</option>
+                    <option value="#">*</option>
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <button class="btn4" type="button">Salvar</button>
+    <button class="btn5" type="button">Cancelar</button>
+</body>
+
+</html>
