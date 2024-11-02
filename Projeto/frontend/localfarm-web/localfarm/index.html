@@ -8,24 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="dist/global.css">
 </head>
-<body class="bg-custom-green flex h-screen">
-    <main role="main" class="flex w-full">
-        <section class="flex flex-col w-1/2 items-center justify-center">
-            <div class="flex items-center justify-center">
-                <img src="img/LOCAL FARM.png" alt="Logo Local Farm" class="w-34">
+<body class="bg-custom-green overflow-hidden">
+    <main role="main" class="">
+        <div class="flex flex-col m-2 md:p-0 md:flex-row justify-center items-center gap-x-[100px] overflow-hidden overflow-y-hidden">
+            <div class="hidden md:block flex-col items-center justify-center">
+                <div class="flex items-center justify-center">
+                    <img src="img/LOCAL FARM.png" alt="Logo Local Farm" class="w-34">
+                </div>
             </div>
-        </section>
-        <section class="flex flex-col w-1/2 items-start justify-center p-20">
-            <div class="bg-custom-beige bg-opacity-75 p-20 rounded-[63px] shadow-lg w-96 text-center">
-                <h1 class="text-custom-brown text-2xl mb-2">Seja bem-vindo!</h1>
-                <p class="text-custom-brown text-sm mb-8">Em caso de perda de acesso, entre em contato com o seu gerente ou supervisor</p>
-                <form action="/login" method="post">
-                    <input type="text" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                    <input type="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                    <input type="submit" value="ENTRAR" class="bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300">
-                </form>
-            </div>
-        </section>
+            <div class="flex flex-col items-start justify-center p-20">
+                <div class="bg-custom-beige bg-opacity-75 p-6 md:p-10 rounded-xl md:rounded-lg shadow-lg w-96 text-center">
+                    <div class="block md:hidden pb-10 flex-col items-center justify-center">
+                        <div class="flex items-center justify-center">
+                            <img src="img/LOCAL FARM.png" alt="Logo Local Farm" class="w-34">
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-custom-brown text-2xl mb-2">Seja bem-vindo!</h1>
+                        <p class="text-custom-brown text-sm mb-8">Em caso de perda de acesso, entre em contato com o seu gerente ou supervisor</p>
+                    </div>
+                    <form action="/login" method="post">
+                        <input type="text" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                        <input type="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                    </form>
+                    <div class="w-full pb-10">
+                        <a href="" class="w-full bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300 text-center">
+                            ENTRAR
+                        </a>
+                    </div>
+                </div>
+            </div>        
+        </div>
     </main>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <meta name="description" content="Página de login para acesso ao sistema Local Farm">
+    <meta name="keywords" content="login, acesso, Local Farm">
+    <meta name="author" content="Seu Nome">
+    <link rel="stylesheet" href="../../dist/global.css">
+</head>
+<body>
+    <nav id="navbar">
+        <div class="flex items-center justify-between bg-custom-green-93 py-6 px-4">
+            <div class="flex items-center cursor-pointer">
+                <img src="../../img/LOCAL FARM.png" alt="Local Farm Logo" class="w-[120px] h-auto">
+            </div>
+            
+            <div class="inline-flex items-center gap-x-4">
+                <div class="hidden md:block">
+                    <div class="inline-flex gap-x-6">
+                        <div>
+                            <img src="../../img/picture_user_login.png" class="w-[38px] h-[38px] rounded-full" alt="Imagem Usuário">
+                        </div>
+                        <div>
+                            <p class="text-[24px] font-poppins font-medium leading-tight text-white">Olá, Fulana!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 flex flex-col justify-center items-center gap-y-2 cursor-pointer" onclick="showLogoutPopup()">
+                    <img src="../../img/logout_icon.svg" class="w-[38px] h-[38px]" alt="Icone Logout">
+                    <div>
+                        <p class="text-base font-poppins font-bold leading-tight-20 text-white">LOGOUT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pop-up de confirmação -->
+        <div id="logoutPopup" class="fixed inset-0 bg-custom-green-95 bg-opacity-50 flex flex-col items-center justify-center hidden">
+            <div class="px-10 m-4 md:m-0 bg-custom-green-95 rounded-lg shadow-lg text-center">
+                <div class="mt-10 md:mt-[83px] pb-6 flex justify-center items-center">
+                    <img src="../../img/logout_warning.png" class="w-[120px] h-fit" alt="Logout Aviso">
+                </div>
+                <h2 class="text-xl font-poppins font-medium text-custom-brown mb-4">Tem certeza?</h2>
+                <p class="text-[24px] font-poppins font-bold text-custom-orange">Deseja mesmo sair do sistema?</p>
+                <div class="mb-10 md:mb-[107px] pt-10 flex justify-around mt-4">
+                    <button onclick="confirmLogout()" class="bg-red-500 text-white py-2 px-10 rounded-lg hover:bg-red-600 transition duration-200">Sim</button>
+                    <button onclick="closeLogoutPopup()" class="bg-gray-300 text-black py-2 px-10 rounded-lg hover:bg-gray-400 transition duration-200">Não</button>
+                </div>
+            </div>
+        </div>
+
+    </nav> 
+
+    <script>
+        function showLogoutPopup() {
+            document.getElementById("logoutPopup").classList.remove("hidden");
+        }
+
+        function closeLogoutPopup() {
+            document.getElementById("logoutPopup").classList.add("hidden");
+        }
+
+        function confirmLogout() {
+            window.location.href = "/logout"; 
+        }
+    </script>
+</body>
+</html>
