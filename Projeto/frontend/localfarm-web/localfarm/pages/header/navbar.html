@@ -1,10 +1,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <meta name="description" content="Página de login para acesso ao sistema Local Farm">
-    <meta name="keywords" content="login, acesso, Local Farm">
-    <meta name="author" content="Seu Nome">
+    <title>Menu</title>
+    <meta name="description" content="Página do menu principal">
     <link rel="stylesheet" href="../../dist/global.css">
 </head>
 <body>
@@ -61,7 +59,12 @@
         }
 
         function confirmLogout() {
-            window.location.href = "/logout"; 
+            // Remover o token JWT do armazenamento
+            localStorage.removeItem("jwtToken");
+            sessionStorage.removeItem("jwtToken");
+
+            // Redirecionar para a página de login (index.html)
+            window.location.href = "../../index.html";
         }
     </script>
 </body>

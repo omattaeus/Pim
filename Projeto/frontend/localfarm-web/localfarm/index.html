@@ -27,18 +27,20 @@
                         <h1 class="text-custom-brown text-2xl mb-2">Seja bem-vindo!</h1>
                         <p class="text-custom-brown text-sm mb-8">Em caso de perda de acesso, entre em contato com o seu gerente ou supervisor</p>
                     </div>
-                    <form action="/login" method="post">
-                        <input type="text" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                        <input type="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                    </form>
-                    <div class="w-full pb-10">
-                        <a href="" class="w-full bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300 text-center">
+                    <!-- Adicionando o id ao formulário -->
+                    <form id="loginForm">
+                        <input type="text" id="username" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                        <input type="password" id="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                        <button type="submit" class="w-full bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300 text-center">
                             ENTRAR
-                        </a>
-                    </div>
+                        </button>
+                    </form>
+                    
                 </div>
             </div>        
         </div>
     </main>
+
+    <script src="assets/js/submit_form.js"></script>
 </body>
 </html>
