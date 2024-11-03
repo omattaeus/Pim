@@ -1,0 +1,46 @@
+[
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://cliente-localfarm-dpcdeqevd3e7hddg.brazilsouth-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "msdeploySite": "cliente-localfarm",
+    "mySQLDBConnectionString": "",
+    "profileName": "cliente-localfarm - Web Deploy",
+    "publishMethod": "MSDeploy",
+    "publishUrl": "cliente-localfarm-dpcdeqevd3e7hddg.scm.brazilsouth-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://cliente-localfarm-dpcdeqevd3e7hddg.brazilsouth-01.azurewebsites.net",
+    "ftpPassiveMode": "True",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "cliente-localfarm - FTP",
+    "publishMethod": "FTP",
+    "publishUrl": "ftps://waws-prod-cq1-043.ftp.azurewebsites.windows.net/site/wwwroot",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://cliente-localfarm-dpcdeqevd3e7hddg.brazilsouth-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "cliente-localfarm - Zip Deploy",
+    "publishMethod": "ZipDeploy",
+    "publishUrl": "cliente-localfarm-dpcdeqevd3e7hddg.scm.brazilsouth-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  }
+]

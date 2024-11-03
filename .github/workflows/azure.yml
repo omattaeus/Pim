@@ -5,22 +5,10 @@ on:
     branches:
       - master
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   deploy-app:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_APP }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -48,14 +36,6 @@ jobs:
   deploy-client:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_CLIENT }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -83,14 +63,6 @@ jobs:
   deploy-product:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCT }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -118,14 +90,6 @@ jobs:
   deploy-productmovment:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCTMOVEMENT }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -153,14 +117,6 @@ jobs:
   deploy-supplier:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_SUPPLIER }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -188,14 +144,6 @@ jobs:
   deploy-unitofmeasure:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID_UNITOFMEASURE }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'IDENTITY'
-
       - name: Checkout code
         uses: actions/checkout@v2
 

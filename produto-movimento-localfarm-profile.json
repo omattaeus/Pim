@@ -1,0 +1,46 @@
+[
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://produto-movimento-localfarm-cuf6dqcxhaa3c8a7.brazilsouth-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "msdeploySite": "produto-movimento-localfarm",
+    "mySQLDBConnectionString": "",
+    "profileName": "produto-movimento-localfarm - Web Deploy",
+    "publishMethod": "MSDeploy",
+    "publishUrl": "produto-movimento-localfarm-cuf6dqcxhaa3c8a7.scm.brazilsouth-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://produto-movimento-localfarm-cuf6dqcxhaa3c8a7.brazilsouth-01.azurewebsites.net",
+    "ftpPassiveMode": "True",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "produto-movimento-localfarm - FTP",
+    "publishMethod": "FTP",
+    "publishUrl": "ftp://waws-prod-cq1-043.ftp.azurewebsites.windows.net/site/wwwroot",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  },
+  {
+    "SQLServerDBConnectionString": "REDACTED",
+    "controlPanelLink": "https://portal.azure.com",
+    "databases": null,
+    "destinationAppUrl": "https://produto-movimento-localfarm-cuf6dqcxhaa3c8a7.brazilsouth-01.azurewebsites.net",
+    "hostingProviderForumLink": "",
+    "mySQLDBConnectionString": "",
+    "profileName": "produto-movimento-localfarm - Zip Deploy",
+    "publishMethod": "ZipDeploy",
+    "publishUrl": "produto-movimento-localfarm-cuf6dqcxhaa3c8a7.scm.brazilsouth-01.azurewebsites.net:443",
+    "userName": "REDACTED",
+    "userPWD": "REDACTED",
+    "webSystem": "WebSites"
+  }
+]
