@@ -34,7 +34,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: app-localfarm-bjhwf5bjgxcjawhq.brazilsouth-01.azurewebsites.net/eureka/
+      defaultZone: https://app-localfarm-bjhwf5bjgxcjawhq.brazilsouth-01.azurewebsites.net/
 
 feign:
   client:
