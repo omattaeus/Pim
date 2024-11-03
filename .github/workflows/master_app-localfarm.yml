@@ -34,5 +34,3 @@ jobs:
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_APP }}
           package: 'Projeto/backend/app/target/app-0.0.1-SNAPSHOT.jar'
-
-          
