@@ -36,7 +36,7 @@ jobs:
         with:
           app-name: 'app-localfarm'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_APP }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_APP }}
           package: $(pwd)/target/*.jar
 
   deploy-client:
@@ -62,7 +62,7 @@ jobs:
         with:
           app-name: 'cliente-localfarm'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_CLIENT }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_CLIENT }}
           package: $(pwd)/target/*.jar
 
   deploy-product:
@@ -88,7 +88,7 @@ jobs:
         with:
           app-name: 'produto'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCT }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCT }}
           package: $(pwd)/target/*.jar
 
   deploy-productmovment:
@@ -114,7 +114,7 @@ jobs:
         with:
           app-name: 'produto-movimento-localfarm'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCTMOVMENT }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCTMOVMENT }}
           package: $(pwd)/target/*.jar
 
   deploy-supplier:
@@ -140,7 +140,7 @@ jobs:
         with:
           app-name: 'fornecedor-localfarm'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_SUPPLIER }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_SUPPLIER }}
           package: $(pwd)/target/*.jar
 
   deploy-unitofmeasure:
@@ -166,5 +166,5 @@ jobs:
         with:
           app-name: 'unidade-medida-localfarm'
           slot-name: 'production'
-          credentials: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_UNITOFMEASURE }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_UNITOFMEASURE }}
           package: $(pwd)/target/*.jar
