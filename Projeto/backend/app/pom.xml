@@ -33,29 +33,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Actuator para monitoramento -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<!-- Micrometer e integração com Azure Monitor -->
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-azure-monitor</artifactId>
-			<version>1.13.6</version>
-		</dependency>
-
-		<!-- Adicionando Tomcat para garantir contexto de servlet -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-		</dependency>
-
 		<!-- Testes -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
