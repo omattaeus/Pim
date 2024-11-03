@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
 
         try {
-            // Fazer requisição ao endpoint de login
-            const response = await fetch('http://192.168.15.8:8082/api/users/login', {
+            // Fazer requisição ao endpoint de login no ambiente de produção
+            const response = await fetch('https://produto-gaa2a9gfbvenbaaf.brazilsouth-01.azurewebsites.net/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
