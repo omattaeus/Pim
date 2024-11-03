@@ -23,7 +23,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to App Directory
-        working-directory: Projetos/backend/app
+        working-directory: Pim/Projeto/backend/app
         run: |
           echo "Navigated to app directory"
           mvn clean package -DskipTests
@@ -49,7 +49,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Client Directory
-        working-directory: Projetos/backend/client
+        working-directory: Pim/Projeto/backend/client
         run: |
           echo "Navigated to client directory"
           mvn clean package -DskipTests
@@ -75,7 +75,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Directory
-        working-directory: Projetos/backend/product
+        working-directory: Pim/Projeto/backend/product
         run: |
           echo "Navigated to product directory"
           mvn clean package -DskipTests
@@ -101,7 +101,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Movement Directory
-        working-directory: Projetos/backend/productmovment
+        working-directory: Pim/Projeto/backend/productmovment
         run: |
           echo "Navigated to product movement directory"
           mvn clean package -DskipTests
@@ -127,7 +127,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Supplier Directory
-        working-directory: Projetos/backend/supplier
+        working-directory: Pim/Projeto/backend/supplier
         run: |
           echo "Navigated to supplier directory"
           mvn clean package -DskipTests
@@ -153,7 +153,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Unit of Measure Directory
-        working-directory: Projetos/backend/unitofmeasure
+        working-directory: Pim/Projeto/backend/unitofmeasure
         run: |
           echo "Navigated to unit of measure directory"
           mvn clean package -DskipTests
