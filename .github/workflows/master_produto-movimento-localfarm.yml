@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy JAR app to Azure Web App - produto-movimento-localfarm
+name: Azure Web App Deploy - Product Movement
 
 on:
   push:
@@ -9,46 +6,31 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
-  build:
+  deploy-productmovment:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set up Java version
-        uses: actions/setup-java@v4
+      - name: Set up Java
+        uses: actions/setup-java@v2
         with:
+          distribution: 'temurin'
           java-version: '17'
-          distribution: 'microsoft'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Build Product Movement
+        working-directory: Projeto/backend/productmovment
+        run: mvn clean package -DskipTests
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-      
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: java-app
-      
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+      - name: Deploy Product Movement
+        uses: azure/webapps-deploy@v2
         with:
           app-name: 'produto-movimento-localfarm'
-          slot-name: 'Production'
-          package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_041C5F5FD2214485B46EFD8854DD2313 }}
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCTMOVMENT }}
+          package: Projeto/backend/productmovment/target/productmovment-0.0.1-SNAPSHOT.jar
