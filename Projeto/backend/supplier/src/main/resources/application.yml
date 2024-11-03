@@ -16,15 +16,15 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
-  flyway:
-    baseline-on-migrate: true
   main:
     allow-circular-references: true
 
 eureka:
   client:
     service-url:
-      defaultZone: app-localfarm-bjhwf5bjgxcjawhq.brazilsouth-01.azurewebsites.net/eureka/
+      defaultZone: https://app-localfarm-bjhwf5bjgxcjawhq.brazilsouth-01.azurewebsites.net/eureka/
+  instance:
+    prefer-ip-address: true
 
 feign:
   client:
