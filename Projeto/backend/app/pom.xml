@@ -21,50 +21,52 @@
 	</properties>
 
 	<dependencies>
-		<!-- Dependência do Eureka Server para registro de microsserviços -->
+		<!-- Dependência do Eureka Server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
-		<!-- Dependência do Spring Boot Web para suporte a MVC -->
+		<!-- Spring Boot Web para suporte a MVC e Tomcat -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Dependência do Actuator para monitoramento -->
+		<!-- Actuator para monitoramento -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
-		<!-- Dependência do Micrometer para monitoramento e métricas -->
+		<!-- Micrometer e integração com Azure Monitor -->
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-azure-monitor</artifactId>
 			<version>1.13.6</version>
 		</dependency>
 
-		<!-- Dependência do Azure Webapp Maven Plugin para deploy -->
+		<!-- Adicionando Tomcat para garantir contexto de servlet -->
 		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>azure-webapp-maven-plugin</artifactId>
-			<version>2.13.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
 		</dependency>
 
-		<!-- Dependência do Spring Boot Test para testes -->
+		<!-- Testes -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Dependência do JUnit Jupiter para testes -->
+		<!-- JUnit para testes -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.9.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
