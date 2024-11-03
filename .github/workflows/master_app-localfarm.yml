@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Build App
         working-directory: Projeto/backend/app
@@ -33,4 +33,4 @@ jobs:
           app-name: 'app-localfarm'
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_APP }}
-          package: Projeto/backend/app/target/app-0.0.1-SNAPSHOT.jar
+          package: 'Projeto/backend/app/target/app-0.0.1-SNAPSHOT.jar'
