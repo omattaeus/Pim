@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   deploy-app:
     runs-on: ubuntu-latest
@@ -19,11 +23,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to App Directory
-        working-directory: ./Projetos/backend/app
-        run: echo "Navigated to app directory"
-
-      - name: Build App
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/app
+        run: |
+          echo "Navigated to app directory"
+          mvn clean package -DskipTests
 
       - name: Deploy App
         uses: azure/webapps-deploy@v2
@@ -46,11 +49,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Client Directory
-        working-directory: ./Projetos/backend/client
-        run: echo "Navigated to client directory"
-
-      - name: Build Client
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/client
+        run: |
+          echo "Navigated to client directory"
+          mvn clean package -DskipTests
 
       - name: Deploy Client
         uses: azure/webapps-deploy@v2
@@ -73,11 +75,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Directory
-        working-directory: ./Projetos/backend/product
-        run: echo "Navigated to product directory"
-
-      - name: Build Product
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/product
+        run: |
+          echo "Navigated to product directory"
+          mvn clean package -DskipTests
 
       - name: Deploy Product
         uses: azure/webapps-deploy@v2
@@ -100,11 +101,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Movement Directory
-        working-directory: ./Projetos/backend/productmovment
-        run: echo "Navigated to product movement directory"
-
-      - name: Build Product Movement
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/productmovment
+        run: |
+          echo "Navigated to product movement directory"
+          mvn clean package -DskipTests
 
       - name: Deploy Product Movement
         uses: azure/webapps-deploy@v2
@@ -127,11 +127,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Supplier Directory
-        working-directory: ./Projetos/backend/supplier
-        run: echo "Navigated to supplier directory"
-
-      - name: Build Supplier
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/supplier
+        run: |
+          echo "Navigated to supplier directory"
+          mvn clean package -DskipTests
 
       - name: Deploy Supplier
         uses: azure/webapps-deploy@v2
@@ -154,11 +153,10 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Unit of Measure Directory
-        working-directory: ./Projetos/backend/unitofmeasure
-        run: echo "Navigated to unit of measure directory"
-
-      - name: Build Unit of Measure
-        run: mvn clean package -DskipTests
+        working-directory: Projetos/backend/unitofmeasure
+        run: |
+          echo "Navigated to unit of measure directory"
+          mvn clean package -DskipTests
 
       - name: Deploy Unit of Measure
         uses: azure/webapps-deploy@v2
