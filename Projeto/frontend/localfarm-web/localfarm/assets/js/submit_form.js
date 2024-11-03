@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('loginForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Impedir o recarregamento da página
 
+        console.log('teste');
         // Obter valores dos campos de entrada
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;

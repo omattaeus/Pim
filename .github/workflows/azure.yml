@@ -1,0 +1,211 @@
+name: Azure Web App Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_APP }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to App Directory
+        working-directory: ./Projetos/backend/app
+        run: echo "Navigated to app directory"
+
+      - name: Build App
+        run: mvn clean package -DskipTests
+
+      - name: Deploy App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'app-localfarm'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_APP }}
+          package: $(pwd)/target/*.jar
+
+  deploy-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_CLIENT }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to Client Directory
+        working-directory: ./Projetos/backend/client
+        run: echo "Navigated to client directory"
+
+      - name: Build Client
+        run: mvn clean package -DskipTests
+
+      - name: Deploy Client
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'cliente-localfarm'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_CLIENT }}
+          package: $(pwd)/target/*.jar
+
+  deploy-product:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCT }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to Product Directory
+        working-directory: ./Projetos/backend/product
+        run: echo "Navigated to product directory"
+
+      - name: Build Product
+        run: mvn clean package -DskipTests
+
+      - name: Deploy Product
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'produto'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCT }}
+          package: $(pwd)/target/*.jar
+
+  deploy-productmovment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCTMOVEMENT }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to Product Movement Directory
+        working-directory: ./Projetos/backend/productmovment
+        run: echo "Navigated to product movement directory"
+
+      - name: Build Product Movement
+        run: mvn clean package -DskipTests
+
+      - name: Deploy Product Movement
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'produto-movimento-localfarm'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_PRODUCTMOVMENT }}
+          package: $(pwd)/target/*.jar
+
+  deploy-supplier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_SUPPLIER }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to Supplier Directory
+        working-directory: ./Projetos/backend/supplier
+        run: echo "Navigated to supplier directory"
+
+      - name: Build Supplier
+        run: mvn clean package -DskipTests
+
+      - name: Deploy Supplier
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'fornecedor-localfarm'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_SUPPLIER }}
+          package: $(pwd)/target/*.jar
+
+  deploy-unitofmeasure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID_UNITOFMEASURE }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Navigate to Unit of Measure Directory
+        working-directory: ./Projetos/backend/unitofmeasure
+        run: echo "Navigated to unit of measure directory"
+
+      - name: Build Unit of Measure
+        run: mvn clean package -DskipTests
+
+      - name: Deploy Unit of Measure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'unidade-medida-localfarm'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_UNITOFMEASURE }}
+          package: $(pwd)/target/*.jar

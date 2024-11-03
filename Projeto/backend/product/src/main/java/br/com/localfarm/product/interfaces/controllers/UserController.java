@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/users")
 @Validated
@@ -25,7 +26,6 @@ public class UserController {
     private final RoleService roleService;
     private final JwtService jwtService;
 
-    @Autowired
     public UserController(UserService userService, RoleService roleService, JwtService jwtService) {
         this.userService = userService;
         this.roleService = roleService;

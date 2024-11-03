@@ -39,22 +39,13 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(EndpointsUtil.ENDPOINTS_ANYONE_CAN_ACCESS).permitAll()
-                        // Permitir apenas para ADMINISTRADOR
                         .requestMatchers(EndpointsUtil.ENDPOINTS_WITH_ADMINISTRADOR_CAN_ACCESS).hasAuthority("ADMINISTRADOR")
-                        // Permitir para ADMINISTRADOR e GERENCIAL
                         .requestMatchers(EndpointsUtil.ENDPOINTS_WITH_GERENCIAL_CAN_ACCESS).hasAnyAuthority("ADMINISTRADOR", "GERENCIAL")
-                        // Permitir para ADMINISTRADOR, GERENCIAL e OPERACIONAL
                         .requestMatchers(EndpointsUtil.ENDPOINTS_WITH_OPERACIONAL_CAN_ACCESS).hasAnyAuthority("ADMINISTRADOR", "GERENCIAL", "OPERACIONAL")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true)
-                        .deleteCookies("JSESSIONID")
-                );
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
