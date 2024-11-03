@@ -18,6 +18,7 @@ spring:
       show-sql: true
     main:
       allow-circular-references: true
+      allow-bean-definition-overriding: true
 
 eureka:
   client:
