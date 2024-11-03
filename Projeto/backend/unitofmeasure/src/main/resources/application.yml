@@ -33,6 +33,15 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
 
+management:
+  metrics:
+    export:
+      enabled: false
+  endpoint:
+    metrics:
+      enabled: false
+
+
 # JWT Configuration
 jwt:
   secret: ${SECRET_JWT}
