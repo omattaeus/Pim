@@ -16,6 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Print Working Directory
+        run: pwd
+
       - name: Set up Java
         uses: actions/setup-java@v2
         with:
@@ -23,7 +26,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to App Directory
-        working-directory: Pim/Projeto/backend/app
+        working-directory: Projeto/backend/app
         run: |
           echo "Navigated to app directory"
           mvn clean package -DskipTests
@@ -49,7 +52,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Client Directory
-        working-directory: Pim/Projeto/backend/client
+        working-directory: Projeto/backend/client
         run: |
           echo "Navigated to client directory"
           mvn clean package -DskipTests
@@ -75,7 +78,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Directory
-        working-directory: Pim/Projeto/backend/product
+        working-directory: Projeto/backend/product
         run: |
           echo "Navigated to product directory"
           mvn clean package -DskipTests
@@ -101,7 +104,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Product Movement Directory
-        working-directory: Pim/Projeto/backend/productmovment
+        working-directory: Projeto/backend/productmovment
         run: |
           echo "Navigated to product movement directory"
           mvn clean package -DskipTests
@@ -127,7 +130,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Supplier Directory
-        working-directory: Pim/Projeto/backend/supplier
+        working-directory: Projeto/backend/supplier
         run: |
           echo "Navigated to supplier directory"
           mvn clean package -DskipTests
@@ -153,7 +156,7 @@ jobs:
           java-version: '17'
 
       - name: Navigate to Unit of Measure Directory
-        working-directory: Pim/Projeto/backend/unitofmeasure
+        working-directory: Projeto/backend/unitofmeasure
         run: |
           echo "Navigated to unit of measure directory"
           mvn clean package -DskipTests
