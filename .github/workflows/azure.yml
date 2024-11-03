@@ -3,7 +3,7 @@ name: Azure Web App Deploy
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy-app:
