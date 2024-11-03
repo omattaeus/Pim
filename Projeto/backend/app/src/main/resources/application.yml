@@ -11,12 +11,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: ""
-
+        include: "health,info"
   metrics:
     export:
       azuremonitor:
-        enabled: false
+        enabled: true
 
 server:
-  port: 80 
+  port: 80
