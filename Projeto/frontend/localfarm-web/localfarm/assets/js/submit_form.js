@@ -2,14 +2,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const submitButton = document.getElementById('submitButton');
     const loadingIcon = document.getElementById('loadingIcon');
     const buttonText = document.getElementById('buttonText');
+    const errorMessage = document.createElement('p');  // Para mensagem de erro
+    errorMessage.className = 'text-red-500 mt-4';  // Estilo para o texto de erro
+    errorMessage.style.display = 'none';  // Inicialmente escondido
+    document.getElementById('loginForm').appendChild(errorMessage);  // Adiciona ao formulário
 
     document.getElementById('loginForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Impedir o recarregamento da página
 
-        // Exibir o ícone de carregamento e desativar o botão
+        // Exibir o ícone de carregamento, desativar o botão e esconder mensagem de erro anterior
         buttonText.classList.add('hidden');
         loadingIcon.classList.remove('hidden');
         submitButton.disabled = true;
+        errorMessage.style.display = 'none';
 
         // Obter valores dos campos de entrada
         const username = document.getElementById('username').value;
@@ -35,14 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Redirecionar para a página menu-inicial.html
                 window.location.href = 'pages/menu-inicial.html';
             } else {
-                console.log("Login failed:", response.status);
-                alert('Login falhou: ' + (await response.text()));
+                // Exibir mensagem de erro e voltar ao estado normal
+                const errorText = await response.text();
+                errorMessage.textContent = `Login falhou: ${errorText}`;
+                errorMessage.style.display = 'block';
             }
         } catch (error) {
             console.error('Erro ao fazer login:', error);
-            alert('Ocorreu um erro ao tentar fazer login.');
+            errorMessage.textContent = 'Ocorreu um erro ao tentar fazer login.';
+            errorMessage.style.display = 'block';
         } finally {
-            // Esconder o ícone de carregamento e reativar o botão
+            // Assegurar que o ícone de carregamento desapareça e o botão seja reativado
             buttonText.classList.remove('hidden');
             loadingIcon.classList.add('hidden');
             submitButton.disabled = false;
