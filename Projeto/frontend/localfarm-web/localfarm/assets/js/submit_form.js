@@ -1,8 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const submitButton = document.getElementById('submitButton');
+    const loadingIcon = document.getElementById('loadingIcon');
+    const buttonText = document.getElementById('buttonText');
+
     document.getElementById('loginForm').addEventListener('submit', async function (event) {
         event.preventDefault(); // Impedir o recarregamento da página
 
-        console.log('teste');
+        // Exibir o ícone de carregamento e desativar o botão
+        buttonText.classList.add('hidden');
+        loadingIcon.classList.remove('hidden');
+        submitButton.disabled = true;
+
         // Obter valores dos campos de entrada
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
@@ -33,6 +41,11 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             console.error('Erro ao fazer login:', error);
             alert('Ocorreu um erro ao tentar fazer login.');
+        } finally {
+            // Esconder o ícone de carregamento e reativar o botão
+            buttonText.classList.remove('hidden');
+            loadingIcon.classList.add('hidden');
+            submitButton.disabled = false;
         }
     });
 });
