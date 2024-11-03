@@ -4,15 +4,19 @@ spring:
 
 eureka:
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    register-with-eureka: false
+    fetch-registry: false
 
 management:
+  endpoints:
+    web:
+      exposure:
+        include: ""
+
   metrics:
     export:
       azuremonitor:
         enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: ''
+
+server:
+  port: 80 
