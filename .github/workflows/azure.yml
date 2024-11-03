@@ -19,7 +19,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_APP }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -54,7 +54,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_CLIENT }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -89,7 +89,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCT }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -124,7 +124,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_PRODUCTMOVEMENT }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -159,7 +159,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_SUPPLIER }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
@@ -194,7 +194,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID_UNITOFMEASURE }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          auth-type: 'id-token'
+          auth-type: 'IDENTITY'
 
       - name: Checkout code
         uses: actions/checkout@v2
