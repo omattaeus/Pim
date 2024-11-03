@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 80
 
 spring:
   application:
@@ -11,9 +11,11 @@ eureka:
     fetchRegistry: false
 
 management:
+  metrics:
+    export:
+      azuremonitor:
+        enabled: false
   endpoints:
     web:
       exposure:
-        include: ""
-  metrics:
-    enable: false
+        include: ''
