@@ -8,6 +8,10 @@ eureka:
     fetchRegistry: false
 
 management:
+  metrics:
+    export:
+      azuremonitor:
+        enabled: false
   endpoints:
     web:
       exposure:
