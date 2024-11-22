@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import br.com.localfarm.productmovment.domain.models.*;
 
 import java.time.LocalDateTime;
 
@@ -25,17 +26,23 @@ public class ProductMovement {
     private LocalDateTime movementDate;
 
     @NotBlank(message = "Type is mandatory")
-    private String type; // Entry or Exit
+    private String type;
 
     @NotNull(message = "Quantity is mandatory")
     private Integer quantity;
 
     @NotBlank(message = "Purpose is mandatory")
-    private String purpose; // Purchase, Sale, or Production
+    private String purpose;
 
-    @NotNull(message = "Product ID is mandatory")
-    @Column(name = "product_id", nullable = false)
-    private Long productId; // Reference to the product ID
+    @NotNull(message = "Product is mandatory")
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
+    private Product product;
 
-    private LocalDateTime updatedAt; // Timestamp da última atualização
+    @NotNull(message = "Client is mandatory")
+    @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    private Client client;
+
+    private LocalDateTime updatedAt;
 }

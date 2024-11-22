@@ -1,28 +1,24 @@
 package br.com.localfarm.productmovment.application.services;
 
-import br.com.localfarm.productmovment.domain.events.ProductUpdatedEvent;
+import br.com.localfarm.productmovment.domain.models.Client;
+import br.com.localfarm.productmovment.domain.models.Product;
 import br.com.localfarm.productmovment.domain.models.ProductMovement;
 import br.com.localfarm.productmovment.domain.repositories.ProductMovementRepository;
 import br.com.localfarm.productmovment.application.exceptions.ProductMovementNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.server.ResponseStatusException;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import java.util.function.Consumer;
+import java.util.Optional;
 
 @Service
-@Validated
 public class ProductMovementService {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductMovementService.class);
@@ -30,7 +26,8 @@ public class ProductMovementService {
     private final ProductMovementRepository productMovementRepository;
     private final RestTemplate restTemplate;
 
-    private final String BASE_URL = "http://localhost:8082/p";
+    private final String PRODUCT_BASE_URL = "https://produto-gaa2a9gfbvenbaaf.brazilsouth-01.azurewebsites.net/p";
+    private final String CLIENT_BASE_URL = "https://cliente-localfarm-dpcdeqevd3e7hddg.brazilsouth-01.azurewebsites.net/clients";
 
     @Autowired
     public ProductMovementService(ProductMovementRepository productMovementRepository, RestTemplate restTemplate) {
@@ -42,13 +39,15 @@ public class ProductMovementService {
     public ProductMovement createProductMovement(@Valid ProductMovement productMovement) {
         validateProductMovement(productMovement);
 
-        try {
-            ProductMovement createdMovement = restTemplate.postForObject(BASE_URL, productMovement, ProductMovement.class);
-            return productMovementRepository.save(createdMovement);
-        } catch (Exception e) {
-            logger.error("Erro ao criar movimento de produto: {}", e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao criar movimento de produto");
-        }
+        // Validar e obter informações sobre o produto
+        Product product = fetchProductById(productMovement.getProduct().getId());
+        productMovement.setProduct(product);
+
+        // Validar e obter informações sobre o cliente
+        Client client = fetchClientById(productMovement.getClient().getId());
+        productMovement.setClient(client);
+
+        return productMovementRepository.save(productMovement);
     }
 
     @Transactional
@@ -58,63 +57,62 @@ public class ProductMovementService {
         ProductMovement existingProductMovement = productMovementRepository.findById(id)
                 .orElseThrow(() -> new ProductMovementNotFoundException("ProductMovement not found with id: " + id));
 
+        // Validar e obter informações sobre o produto
+        Product product = fetchProductById(productMovement.getProduct().getId());
+        productMovement.setProduct(product);
+
+        // Validar e obter informações sobre o cliente
+        Client client = fetchClientById(productMovement.getClient().getId());
+        productMovement.setClient(client);
+
         productMovement.setId(existingProductMovement.getId());
+        return productMovementRepository.save(productMovement);
+    }
+
+    private Product fetchProductById(Long productId) {
+        String url = PRODUCT_BASE_URL + "/" + productId;
 
         try {
-            restTemplate.put(BASE_URL + "/atualizar/" + id, productMovement);
-            return productMovementRepository.save(productMovement);
+            ResponseEntity<Product> response = restTemplate.getForEntity(url, Product.class);
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                return response.getBody();
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found with id: " + productId);
+            }
         } catch (Exception e) {
-            logger.error("Erro ao atualizar movimento de produto: {}", e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao atualizar movimento de produto");
+            logger.error("Error fetching product with id {}: {}", productId, e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching product data");
         }
     }
 
-    @Transactional
-    public void deleteProductMovement(Long id) {
-        if (!productMovementRepository.existsById(id)) {
-            throw new ProductMovementNotFoundException("ProductMovement not found with id: " + id);
-        }
+    private Client fetchClientById(Long clientId) {
+        String url = CLIENT_BASE_URL + "/" + clientId;
 
         try {
-            // Excluir movimento no serviço externo
-            restTemplate.delete(BASE_URL + "/excluir/" + id);
-            productMovementRepository.deleteById(id);
+            ResponseEntity<Client> response = restTemplate.getForEntity(url, Client.class);
+            if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
+                return response.getBody();
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found with id: " + clientId);
+            }
         } catch (Exception e) {
-            logger.error("Erro ao excluir movimento de produto: {}", e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao excluir movimento de produto");
+            logger.error("Error fetching client with id {}: {}", clientId, e.getMessage());
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error fetching client data");
         }
-    }
-
-    public Page<ProductMovement> getAllProductMovements(Pageable pageable) {
-        return productMovementRepository.findAll(pageable);
-    }
-
-    public ProductMovement getProductMovementById(Long id) {
-        return productMovementRepository.findById(id)
-                .orElseThrow(() -> new ProductMovementNotFoundException("ProductMovement not found with id: " + id));
-    }
-
-    @Bean
-    public Consumer<ProductUpdatedEvent> productUpdated() {
-        return event -> {
-            logger.info("Recebido evento de atualização de produto: {}", event);
-            productMovementRepository.findByProductId(event.getProductId()).forEach(movement -> {
-                productMovementRepository.save(movement);
-                logger.info("Atualizado movimento de produto com ID: {}", movement.getId());
-            });
-        };
     }
 
     private void validateProductMovement(ProductMovement productMovement) {
-        // Validações completas aqui...
         if (productMovement.getQuantity() == null || productMovement.getQuantity() <= 0) {
             throw new IllegalArgumentException("Quantity must be greater than zero");
         }
         if (productMovement.getMovementDate() == null) {
             throw new IllegalArgumentException("Movement date must not be null");
         }
-        if (productMovement.getProductId() == null) {
+        if (productMovement.getProduct() == null || productMovement.getProduct().getId() == null) {
             throw new IllegalArgumentException("Product ID must not be null");
+        }
+        if (productMovement.getClient() == null || productMovement.getClient().getId() == null) {
+            throw new IllegalArgumentException("Client ID must not be null");
         }
         if (productMovement.getType() == null || productMovement.getType().trim().isEmpty()) {
             throw new IllegalArgumentException("Movement type must not be null or empty");

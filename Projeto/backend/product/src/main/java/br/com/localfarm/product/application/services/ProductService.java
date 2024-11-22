@@ -1,7 +1,7 @@
 package br.com.localfarm.product.application.services;
 
 import br.com.localfarm.product.domain.models.Product;
-import br.com.localfarm.product.domain.models.dto.Client;
+import br.com.localfarm.product.domain.models.UnitOfMeasure;
 import br.com.localfarm.product.domain.repositories.ProductRepository;
 import br.com.localfarm.product.application.exceptions.ProductNotFoundException;
 import br.com.localfarm.product.application.exceptions.InvalidProductException;
@@ -25,6 +25,8 @@ public class ProductService {
     private final RestTemplate restTemplate;
     private final StreamBridge streamBridge;
 
+    private static final String UNIT_OF_MEASURE_SERVICE_URL = "https://unidade-medida-localfarm-gsatghf5bjfaa3gx.brazilsouth-01.azurewebsites.net/units-of-measure/";
+
     @Autowired
     public ProductService(ProductRepository productRepository, RestTemplate restTemplate, StreamBridge streamBridge) {
         this.productRepository = productRepository;
@@ -34,21 +36,23 @@ public class ProductService {
 
     @Transactional
     public Product createProduct(@Valid Product product) {
+        validateAndSetUnitOfMeasure(product);
         validateProduct(product);
         return productRepository.save(product);
     }
 
     @Transactional
     public Product updateProduct(Long id, @Valid Product product) {
+        validateAndSetUnitOfMeasure(product);
         validateProduct(product);
 
         Product existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
 
-        // Atualiza o produto existente
         existingProduct.setName(product.getName());
         existingProduct.setCode(product.getCode());
         existingProduct.setCategory(product.getCategory());
+        existingProduct.setUnitOfMeasure(product.getUnitOfMeasure());
 
         Product updatedProduct = productRepository.save(existingProduct);
 
@@ -61,7 +65,6 @@ public class ProductService {
         );
         streamBridge.send("productUpdated-out-0", event);
 
-        // Atualiza o movimento de produto em cascata
         updateProductMovements(updatedProduct);
 
         return updatedProduct;
@@ -87,17 +90,29 @@ public class ProductService {
     }
 
     public void updateProductMovements(Product product) {
-        // Chama o serviço de movimento de produtos para atualizar em cascata
-        String url = "http://localhost:8084/product-movements/product-updated";
+        String url = "https://produto-gaa2a9gfbvenbaaf.brazilsouth-01.azurewebsites.net/product-movements/product-updated";
         ProductUpdatedEvent event = new ProductUpdatedEvent(
                 product.getId(),
                 product.getName(),
                 product.getCode(),
                 product.getCategory()
         );
-
-        // Envia a atualização para o serviço de movimento de produtos
         restTemplate.postForEntity(url, event, Void.class);
+    }
+
+    private void validateAndSetUnitOfMeasure(Product product) {
+        if (product.getUnitOfMeasure() == null || product.getUnitOfMeasure().getId() == null) {
+            throw new InvalidProductException("Unit of Measure must not be null");
+        }
+
+        String url = UNIT_OF_MEASURE_SERVICE_URL + product.getUnitOfMeasure().getId();
+        ResponseEntity<UnitOfMeasure> response = restTemplate.getForEntity(url, UnitOfMeasure.class);
+
+        if (!response.getStatusCode().is2xxSuccessful() || response.getBody() == null) {
+            throw new InvalidProductException("Invalid Unit of Measure ID: " + product.getUnitOfMeasure().getId());
+        }
+
+        product.setUnitOfMeasure(response.getBody());
     }
 
     public void validateProduct(Product product) {

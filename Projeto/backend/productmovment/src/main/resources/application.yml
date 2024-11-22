@@ -14,15 +14,41 @@ spring:
           destination: product-updates
           group: product-movement-group
           content-type: application/json
-      rabbit:
-        binder:
-          addresses: ${MQ_URL}
-          username: ${MQ_USER}
-          password: ${MQ_PASSWORD}
+      rabbitmq:
+        addresses: amqps://lfqmftgs:3ZIDRYI401h9qyA8xe9dW8DzeZIpiv4y@turkey.rmq.cloudamqp.com:5671/lfqmftgs
+        username: lfqmftgs
+        password: 3ZIDRYI401h9qyA8xe9dW8DzeZIpiv4y
+        ssl:
+          enabled: true
+        connection-timeout: 5000
+        requested-heartbeat: 30
+        template:
+          retry:
+            enabled: true
+            max-attempts: 5
+            initial-interval: 1000
+            multiplier: 2
+      cloud:
+        stream:
+          bindings:
+            productUpdated-in-0:
+              destination: product-updates
+              group: product-movement-group
+              content-type: application/json
+          rabbit:
+            bindings:
+              productUpdated-out-0:
+                producer:
+                  exchangeType: topic
+                  requiredGroups: product-updates-queue
+                consumer:
+                  autoBindDlq: true
+                  deadLetterQueueName: product-updates-dlq
+                  durableSubscription: true
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: ${DB_URL_TEST}
+    username: ${DB_USER_TEST}
+    password: ${DB_PASSWORD_TEST}
   jpa:
     hibernate:
       ddl-auto: none
@@ -33,7 +59,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: https://app-localfarm-bjhwf5bjgxcjawhq.brazilsouth-01.azurewebsites.net/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
 
@@ -48,3 +74,22 @@ feign:
 jwt:
   secret: ${SECRET_JWT}
   expiration: ${TIME_JWT}
+
+  logging:
+    level:
+      org.springframework.security: DEBUG
+      org.springframework.amqp: DEBUG
+      org.springframework.messaging: DEBUG
+
+  # RabbitMQ Custom Configuration
+  rabbitmq:
+    exchange:
+      name: product-updates
+      type: topic
+    queue:
+      name: product-updates-queue
+      durable: true
+      auto-delete: false
+      exclusive: false
+    dead-letter-queue:
+      name: product-updates-dlq

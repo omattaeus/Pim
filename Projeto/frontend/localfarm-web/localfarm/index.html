@@ -9,31 +9,33 @@
     <link rel="stylesheet" href="dist/global.css">
 </head>
 <body class="bg-custom-green overflow-hidden">
-    <main role="main">
-        <div class="flex flex-col m-2 md:p-0 md:flex-row justify-center items-center gap-x-[100px] overflow-hidden overflow-y-hidden">
-            <div class="flex flex-col items-center justify-center">
-                <img src="img/LOCAL FARM.png" alt="Logo Local Farm" class="w-34">
-            </div>
-            <div class="flex flex-col items-start justify-center p-20">
-                <div class="bg-custom-beige bg-opacity-75 p-6 md:p-10 rounded-xl md:rounded-lg shadow-lg w-96 text-center">
-                    <div>
-                        <h1 class="text-custom-brown text-2xl mb-2">Seja bem-vindo!</h1>
-                        <p class="text-custom-brown text-sm mb-8">Em caso de perda de acesso, entre em contato com o seu gerente ou supervisor</p>
+    <main role="main" class="">
+        <section class="">
+            <div class="flex flex-col m-2 md:p-0 md:flex-row justify-center items-center gap-x-[100px] overflow-hidden overflow-y-hidden">
+                <div class="flex flex-col items-center justify-center">
+                    <img src="img/LOCAL FARM.png" alt="Logo Local Farm" class="w-34">
+                </div>
+                <div class="flex flex-col items-start justify-center p-20">
+                    <div class="bg-custom-beige bg-opacity-75 p-6 md:p-10 rounded-xl md:rounded-lg shadow-lg w-96 text-center">
+                        <div>
+                            <h1 class="text-custom-brown text-2xl mb-2">Seja bem-vindo!</h1>
+                            <p class="text-custom-brown text-sm mb-8">Em caso de perda de acesso, entre em contato com o seu gerente ou supervisor</p>
+                        </div>
+                        <form id="loginForm">
+                            <input type="text" id="username" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                            <input type="password" id="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
+                            <button id="submitButton" type="submit" class="w-full bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300 text-center flex justify-center items-center">
+                                <span id="buttonText">ENTRAR</span>
+                                <svg id="loadingIcon" class="ml-2 w-5 h-5 hidden animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
-                    <form id="loginForm">
-                        <input type="text" id="username" placeholder="Insira seu login" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                        <input type="password" id="password" placeholder="Insira sua senha" required class="w-full p-2 mb-4 border border-gray-300 rounded-[5px]">
-                        <button id="submitButton" type="submit" class="w-full bg-white border border-custom-brown text-custom-brown py-2 px-4 rounded-[5px] cursor-pointer hover:bg-custom-brown hover:text-white transition duration-300 text-center flex justify-center items-center">
-                            <span id="buttonText">ENTRAR</span>
-                            <svg id="loadingIcon" class="ml-2 w-5 h-5 hidden animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                            </svg>
-                        </button>
-                    </form>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <script src="assets/js/submit_form.js"></script>
 </body>

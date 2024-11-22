@@ -5,16 +5,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Product {
 
     @Id
@@ -34,6 +32,11 @@ public class Product {
     @Size(max = 50, message = "Category must not exceed 50 characters")
     private String category;
 
+    @NotNull(message = "Unit of Measure is mandatory")
+    @ManyToOne
+    @JoinColumn(name = "unit_of_measure_id", referencedColumnName = "id")
+    private UnitOfMeasure unitOfMeasure;
+
     /**
      * Método de validação manual para o objeto Product.
      */
@@ -48,6 +51,10 @@ public class Product {
 
         if (this.getCategory() == null || this.getCategory().isEmpty()) {
             throw new InvalidProductException("Product category must not be null or empty");
+        }
+
+        if (this.getUnitOfMeasure() == null) {
+            throw new InvalidProductException("Unit of Measure must not be null");
         }
     }
 }

@@ -15,7 +15,8 @@ public class EndpointsUtil {
              "/p",
             "/p/**",
             "/p/criar",
-            "/p/atualizar/**"
+            "/p/atualizar/**",
+            "/p/atualizar/"
     };
 
     // Endpoints acessíveis para Administrador Geral e Gerencial Fazenda
@@ -24,7 +25,8 @@ public class EndpointsUtil {
          "/p",
          "/p/**",
          "/p/criar",
-         "/p/atualizar/**"
+        "/p/atualizar/**",
+        "/p/atualizar/"
     };
 
     // Endpoints acessíveis para Administrador Geral, Gerencial Fazenda e Operacional Fazenda
