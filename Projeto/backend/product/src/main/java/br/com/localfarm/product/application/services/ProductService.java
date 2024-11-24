@@ -106,9 +106,15 @@ public class ProductService {
         }
 
         String url = UNIT_OF_MEASURE_SERVICE_URL + product.getUnitOfMeasure().getId();
-        ResponseEntity<UnitOfMeasure> response = restTemplate.getForEntity(url, UnitOfMeasure.class);
+        ResponseEntity<UnitOfMeasure> response;
 
-        if (!response.getStatusCode().is2xxSuccessful() || response.getBody() == null) {
+        try {
+            response = restTemplate.getForEntity(url, UnitOfMeasure.class);
+        } catch (Exception e) {
+            throw new InvalidProductException("Failed to fetch Unit of Measure: " + e.getMessage());
+        }
+
+        if (response == null || !response.getStatusCode().is2xxSuccessful() || response.getBody() == null) {
             throw new InvalidProductException("Invalid Unit of Measure ID: " + product.getUnitOfMeasure().getId());
         }
 
@@ -135,6 +141,9 @@ public class ProductService {
         }
         if (product.getCategory().length() > 50) {
             throw new InvalidProductException("Product category must not exceed 50 characters");
+        }
+        if (product.getUnitOfMeasure() == null || product.getUnitOfMeasure().getId() == null) {
+            throw new InvalidProductException("Unit of Measure is mandatory");
         }
     }
 }
